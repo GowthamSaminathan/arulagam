@@ -7,46 +7,39 @@
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body>
-  <script>
-    async function loadProducts() {
-      try {
-        const response = await fetch('./products/products.txt');
-        const text = await response.text();
-        const blocks = text.split(/^[-]{3,}$/m);
+<script>
+  async function loadProducts() {
+    try {
+      const response = await fetch('/arulagam/products/products.txt');
+      const text = await response.text();
 
-        const container = document.createElement('div');
-        container.className = 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-4';
+      // Split each product block by --- or more dashes
+      const blocks = text.split(/^[-]{3,}$/m);
 
-        blocks.forEach(block => {
-          const line = block.trim();
-          if (!line || !line.includes('|')) return;
+      blocks.forEach(block => {
+        const lines = block.trim().split('\n').map(line => line.trim());
+        if (lines.length < 4) return;
 
-          const parts = line.split('|');
-          if (parts.length < 4) return;
+        const [name, image, price, ...descLines] = lines;
+        const description = descLines.join(' ');
+        const imgPath = `/arulagam/products/${image}`;
 
-          const [name, image, price, ...descParts] = parts;
-          const description = descParts.join('|').trim();
-          const imgPath = `./products/${image.trim()}`;
-
-          const card = document.createElement('div');
-          card.className = 'bg-white rounded-xl p-6 shadow text-center';
-
-          card.innerHTML = `
-            <img src="${imgPath}" alt="${name}" class="w-full h-64 object-contain mb-4">
-            <h3 class="text-xl font-semibold text-green-700">${name}</h3>
-            <p class="text-green-600 font-bold">${price}</p>
-            <p class="text-sm text-gray-600 mt-2">${description}</p>
-          `;
-
-          container.appendChild(card);
-        });
-
-        document.body.appendChild(container);
-      } catch (err) {
-        console.error('Failed to load products:', err);
-      }
+        const card = document.createElement('div');
+        card.className = 'product-card p-6 flex flex-col items-center text-center';
+        card.innerHTML = `
+          <img src="${imgPath}" alt="${name}" class="w-full h-64 object-contain rounded-lg mb-4 bg-white border" />
+          <h3 class="text-2xl font-semibold mb-2 text-green-700">${name}</h3>
+          <p class="text-lg font-bold text-green-600 mb-3">${price}</p>
+          <p class="text-gray-600 text-sm leading-relaxed">${description}</p>
+        `;
+        document.getElementById('product-list').appendChild(card);
+      });
+    } catch (err) {
+      console.error('Error loading product data:', err);
     }
-    window.onload = loadProducts;
-  </script>
+  }
+  window.onload = loadProducts;
+</script>
+
 </body>
 </html>
