@@ -1,123 +1,49 @@
 <!DOCTYPE html>
 <html lang="ta">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>அருளகம் சித்த & ஆயுர்வேத வைத்திய சாலை</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
-  <style>
-    body {
-      font-family: sans-serif;
-      background-color: #f0fdf4;
-    }
-    .container {
-      max-width: 1200px;
-    }
-    .product-card {
-      background-color: #fff;
-      border-radius: 1rem;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease-in-out;
-    }
-    .product-card:hover {
-      transform: translateY(-5px);
-    }
-    .section-title::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      bottom: 0;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 4px;
-      background-color: #10b981;
-      border-radius: 2px;
-    }
-    .section-title {
-      position: relative;
-      padding-bottom: 0.5rem;
-    }
-    .about-us-section {
-      background-color: #ecfdf5;
-      border-radius: 1.5rem;
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-    }
-  </style>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body class="text-gray-800">
-  <!-- Header -->
-  <header class="bg-gradient-to-r from-green-600 to-green-800 text-white py-6 rounded-b-3xl shadow-lg">
-    <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between">
-      <div class="flex items-center space-x-4">
-        <img src="/arulagam/logo.png" alt="Logo" class="h-16 w-16 rounded-full border-2 border-white shadow-md" />
-        <div>
-          <h1 class="text-3xl md:text-4xl font-bold">அருளகம் சித்த & ஆயுர்வேத வைத்திய சாலை</h1>
-          <p class="text-lg md:text-xl font-light">பாரம்பரிய சித்த மருத்துவத்தின் நம்பிக்கை மையம்</p>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <!-- Main Content -->
-  <main class="container mx-auto px-4 py-12">
-    <!-- Products Section -->
-    <section id="products" class="mb-16">
-      <h2 class="text-4xl font-bold text-center mb-10 section-title text-green-700">எங்கள் தயாரிப்புகள்</h2>
-      <div id="product-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="about-us-section p-8 md:p-12 text-gray-700">
-      <h2 class="text-4xl font-bold text-center mb-10 section-title text-green-700">தொடர்பு விவரங்கள்</h2>
-      <div class="text-center text-lg space-y-4">
-        <p><strong class="text-green-800">யார்:</strong> சிவ முருகேசன், சித்த மருத்துவர்</p>
-        <p><strong class="text-green-800">இடம்:</strong> 123, முக்கிய சாலை, கோயம்புத்தூர்</p>
-        <p>
-          <strong class="text-green-800">தொலைபேசி:</strong> +91 9367911097<br />
-          <a href="https://wa.me/919367911097" target="_blank" class="inline-block mt-2 text-green-600 hover:text-green-800">
-            <svg class="inline w-5 h-5 mr-1" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M16.403 13.598c-.278-.139-1.645-.812-1.9-.904-.255-.093-.44-.139-.625.14-.185.278-.717.904-.88 1.088-.162.185-.325.208-.603.07-.278-.139-1.174-.433-2.236-1.38-.827-.736-1.384-1.645-1.547-1.923-.162-.278-.017-.428.122-.566.126-.125.278-.325.417-.488.139-.162.185-.278.278-.463.093-.185.047-.347-.023-.488-.07-.139-.625-1.508-.858-2.066-.225-.541-.454-.467-.625-.467-.162 0-.347-.023-.533-.023-.185 0-.488.07-.74.347-.255.278-.972.95-.972 2.304 0 1.354.996 2.66 1.135 2.846.139.185 1.961 2.995 4.747 4.2.663.286 1.18.456 1.583.58.665.211 1.27.182 1.75.11.534-.08 1.645-.672 1.878-1.32.232-.648.232-1.204.162-1.32-.07-.116-.255-.186-.533-.325z" />
-              <path d="M12.004 2.001c-5.524 0-9.997 4.473-9.997 9.997 0 1.76.457 3.467 1.326 4.972L2 22l5.176-1.334c1.467.801 3.133 1.228 4.827 1.228 5.523 0 9.996-4.474 9.996-9.998S17.528 2.001 12.004 2.001zm0 18.165c-1.418 0-2.801-.37-4.01-1.072l-.287-.169-3.073.793.823-2.994-.187-.307c-.807-1.326-1.235-2.85-1.235-4.416 0-4.624 3.765-8.388 8.388-8.388s8.388 3.764 8.388 8.388-3.764 8.388-8.387 8.388z" />
-            </svg>
-            WhatsApp வழியாக தொடர்பு கொள்ள
-          </a>
-        </p>
-        <p><strong class="text-green-800">மின்னஞ்சல்:</strong> info@arulagamsiddha.com</p>
-      </div>
-    </section>
-  </main>
-
-  <footer class="bg-gray-800 text-white py-6 mt-12 rounded-t-3xl shadow-lg">
-    <div class="container mx-auto px-4 text-center">
-      <p>&copy; 2025 அருளகம் சித்த & ஆயுர்வேத வைத்திய சாலை. அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.</p>
-    </div>
-  </footer>
-
+<body>
   <script>
     async function loadProducts() {
       try {
-        const response = await fetch('/arulagam/products/products.txt');
+        const response = await fetch('./products/products.txt');
         const text = await response.text();
-        const lines = text.trim().split('\n');
+        const blocks = text.split(/^[-]{3,}$/m);
 
-        lines.forEach(line => {
-          const [name, image, price, ...descParts] = line.split('|');
-          const description = descParts.join('|');
-          const imgPath = `/arulagam/products/${image.trim()}`;
+        const container = document.createElement('div');
+        container.className = 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-4';
+
+        blocks.forEach(block => {
+          const line = block.trim();
+          if (!line || !line.includes('|')) return;
+
+          const parts = line.split('|');
+          if (parts.length < 4) return;
+
+          const [name, image, price, ...descParts] = parts;
+          const description = descParts.join('|').trim();
+          const imgPath = `./products/${image.trim()}`;
 
           const card = document.createElement('div');
-          card.className = 'product-card p-6 flex flex-col items-center text-center';
+          card.className = 'bg-white rounded-xl p-6 shadow text-center';
 
           card.innerHTML = `
-            <img src="${imgPath}" alt="${name}" class="w-full h-64 object-contain rounded-lg mb-4 bg-white border" />
-            <h3 class="text-2xl font-semibold mb-2 text-green-700">${name}</h3>
-            <p class="text-lg font-bold text-green-600 mb-3">${price}</p>
-            <p class="text-gray-600 text-sm leading-relaxed">${description}</p>
+            <img src="${imgPath}" alt="${name}" class="w-full h-64 object-contain mb-4">
+            <h3 class="text-xl font-semibold text-green-700">${name}</h3>
+            <p class="text-green-600 font-bold">${price}</p>
+            <p class="text-sm text-gray-600 mt-2">${description}</p>
           `;
-          document.getElementById('product-list').appendChild(card);
+
+          container.appendChild(card);
         });
+
+        document.body.appendChild(container);
       } catch (err) {
-        console.error('Error loading product data:', err);
+        console.error('Failed to load products:', err);
       }
     }
     window.onload = loadProducts;
