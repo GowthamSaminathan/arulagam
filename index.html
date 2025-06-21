@@ -5,47 +5,122 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>அருளகம் சித்த & ஆயுர்வேத வைத்திய சாலை</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-</head>
-<body>
-  <div id="product-list" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-6"></div>
-
-  <script>
-    async function loadProducts() {
-      try {
-        const response = await fetch('/arulagam/products/products.txt');
-        const text = await response.text();
-
-        // Split each product block by --- or more dashes
-        const blocks = text.split(/^[-]{3,}$/m);
-
-        const productList = document.getElementById('product-list');
-        if (!productList) throw new Error('Missing #product-list container in DOM');
-
-        blocks.forEach(block => {
-          const lines = block.trim().split('\n').map(line => line.trim());
-          if (lines.length < 4) return;
-
-          const [name, image, price, ...descLines] = lines;
-          const description = descLines.join(' ');
-          const imgPath = `/arulagam/products/${image}`;
-
-          const card = document.createElement('div');
-          card.className = 'product-card p-6 flex flex-col items-center text-center bg-white rounded shadow';
-          card.innerHTML = `
-            <img src="${imgPath}" alt="${name}" class="w-full h-64 object-contain rounded-lg mb-4 bg-white border" />
-            <h3 class="text-2xl font-semibold mb-2 text-green-700">${name}</h3>
-            <p class="text-lg font-bold text-green-600 mb-3">${price}</p>
-            <p class="text-gray-600 text-sm leading-relaxed">${description}</p>
-          `;
-
-          productList.appendChild(card);
-        });
-      } catch (err) {
-        console.error('Error loading product data:', err);
-      }
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f0fdf4;
     }
+    .container {
+      max-width: 1200px;
+    }
+    .product-card {
+      background-color: #ffffff;
+      border-radius: 1rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease-in-out;
+    }
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+    .section-title {
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+    .section-title::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background-color: #10B981;
+      border-radius: 2px;
+    }
+    .about-us-section {
+      background-color: #ecfdf5;
+      border-radius: 1.5rem;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    }
+  </style>
+</head>
+<body class="text-gray-800">
 
-    window.onload = loadProducts;
-  </script>
+<header class="bg-gradient-to-r from-green-600 to-green-800 text-white py-6 rounded-b-3xl shadow-lg">
+  <div class="container mx-auto px-4 text-center">
+    <img src="/arulagam/logo.png" alt="Logo" class="h-24 mx-auto mb-4 rounded-full shadow-md">
+    <h1 class="text-4xl md:text-5xl font-bold mb-2">அருளகம் சித்த & ஆயுர்வேத வைத்திய சாலை</h1>
+    <p class="text-xl md:text-2xl font-light">பாரம்பரிய சித்த மருத்தவத்தின் நம்பிக்கை மையம்</p>
+  </div>
+</header>
+
+<main class="container mx-auto px-4 py-12">
+  <section id="products" class="mb-16">
+    <h2 class="text-4xl font-bold text-center mb-10 section-title text-green-700">எங்கள் தயாரிப்புகள்</h2>
+    <div id="product-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+  </section>
+
+  <section id="about-us" class="about-us-section p-8 md:p-12 mb-16 text-gray-700">
+    <h2 class="text-4xl font-bold text-center mb-10 section-title text-green-700">என்களைப் ப்பதி</h2>
+    <div class="space-y-6 text-lg leading-relaxed">
+      <p>அருளகம் சித்த & ஆயுர்வேத வைத்திய சாலை, பல தலைமுறைகளாக பாரம்பரிய சித்த மருத்த சேவையை வழங்கி வரிக்கிறது. ...</p>
+    </div>
+  </section>
+
+  <section id="contact" class="about-us-section p-8 md:p-12 text-gray-700">
+    <h2 class="text-4xl font-bold text-center mb-10 section-title text-green-700">தொடர்பு விவரங்கள்</h2>
+    <div class="text-center text-lg space-y-4">
+      <p><strong class="text-green-800">யார்:</strong> சிவ முருகேசன், சித்த மருத்தவர்</p>
+      <p><strong class="text-green-800">இடம்:</strong> [உங்கள் முழு முகவரியை இங்கே சேர்க்கவும்]</p>
+      <p><strong class="text-green-800">தொலைபேசி:</strong> +91 9367911097</p>
+      <p><strong class="text-green-800">மின்னன்சல்:</strong> [உங்கள் மின்னன்சல் முகவரியை இங்கே சேர்க்கவும்]</p>
+    </div>
+  </section>
+</main>
+
+<footer class="bg-gray-800 text-white py-6 mt-12 rounded-t-3xl shadow-lg">
+  <div class="container mx-auto px-4 text-center">
+    <p>&copy; 2025 அருளகம் சித்த & ஆயுர்வேத வைத்திய சாலை. அனைத்து உரிமைகளும் பாதுகாக்கப்படவை.</p>
+  </div>
+</footer>
+
+<script>
+  async function loadProducts() {
+    try {
+      const response = await fetch('/arulagam/products/products.txt');
+      const text = await response.text();
+      const blocks = text.split(/^[-]{3,}$/m);
+
+      const productList = document.getElementById('product-list');
+      if (!productList) throw new Error('Missing #product-list container in DOM');
+
+      blocks.forEach(block => {
+        const lines = block.trim().split('\n').map(line => line.trim());
+        if (lines.length < 4) return;
+
+        const [name, image, price, ...descLines] = lines;
+        const description = descLines.join(' ');
+        const imgPath = `/arulagam/products/${image}`;
+
+        const card = document.createElement('div');
+        card.className = 'product-card p-6 flex flex-col items-center text-center';
+        card.innerHTML = `
+          <img src="${imgPath}" alt="${name}" class="w-full h-64 object-contain rounded-lg mb-4 bg-white border" />
+          <h3 class="text-2xl font-semibold mb-2 text-green-700">${name}</h3>
+          <p class="text-lg font-bold text-green-600 mb-3">${price}</p>
+          <p class="text-gray-600 text-sm leading-relaxed">${description}</p>
+        `;
+
+        productList.appendChild(card);
+      });
+    } catch (err) {
+      console.error('Error loading product data:', err);
+    }
+  }
+
+  window.onload = loadProducts;
+</script>
+
 </body>
 </html>
