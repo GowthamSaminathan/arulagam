@@ -7,39 +7,45 @@
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body>
-<script>
-  async function loadProducts() {
-    try {
-      const response = await fetch('/arulagam/products/products.txt');
-      const text = await response.text();
+  <div id="product-list" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-6"></div>
 
-      // Split each product block by --- or more dashes
-      const blocks = text.split(/^[-]{3,}$/m);
+  <script>
+    async function loadProducts() {
+      try {
+        const response = await fetch('/arulagam/products/products.txt');
+        const text = await response.text();
 
-      blocks.forEach(block => {
-        const lines = block.trim().split('\n').map(line => line.trim());
-        if (lines.length < 4) return;
+        // Split each product block by --- or more dashes
+        const blocks = text.split(/^[-]{3,}$/m);
 
-        const [name, image, price, ...descLines] = lines;
-        const description = descLines.join(' ');
-        const imgPath = `/arulagam/products/${image}`;
+        const productList = document.getElementById('product-list');
+        if (!productList) throw new Error('Missing #product-list container in DOM');
 
-        const card = document.createElement('div');
-        card.className = 'product-card p-6 flex flex-col items-center text-center';
-        card.innerHTML = `
-          <img src="${imgPath}" alt="${name}" class="w-full h-64 object-contain rounded-lg mb-4 bg-white border" />
-          <h3 class="text-2xl font-semibold mb-2 text-green-700">${name}</h3>
-          <p class="text-lg font-bold text-green-600 mb-3">${price}</p>
-          <p class="text-gray-600 text-sm leading-relaxed">${description}</p>
-        `;
-        document.getElementById('product-list').appendChild(card);
-      });
-    } catch (err) {
-      console.error('Error loading product data:', err);
+        blocks.forEach(block => {
+          const lines = block.trim().split('\n').map(line => line.trim());
+          if (lines.length < 4) return;
+
+          const [name, image, price, ...descLines] = lines;
+          const description = descLines.join(' ');
+          const imgPath = `/arulagam/products/${image}`;
+
+          const card = document.createElement('div');
+          card.className = 'product-card p-6 flex flex-col items-center text-center bg-white rounded shadow';
+          card.innerHTML = `
+            <img src="${imgPath}" alt="${name}" class="w-full h-64 object-contain rounded-lg mb-4 bg-white border" />
+            <h3 class="text-2xl font-semibold mb-2 text-green-700">${name}</h3>
+            <p class="text-lg font-bold text-green-600 mb-3">${price}</p>
+            <p class="text-gray-600 text-sm leading-relaxed">${description}</p>
+          `;
+
+          productList.appendChild(card);
+        });
+      } catch (err) {
+        console.error('Error loading product data:', err);
+      }
     }
-  }
-  window.onload = loadProducts;
-</script>
 
+    window.onload = loadProducts;
+  </script>
 </body>
 </html>
